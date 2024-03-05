@@ -49,7 +49,8 @@ const ExistingKeys = () => {
   );
 };
 
-const Page = () => {
+const Page = async () => {
+  const defaultLLMResponse = (await(await fetch("/admin/persona/utils/default-model")).json()).defaultLLMResponse;
   return (
     <div className="mx-auto container">
       <AdminPageTitle
@@ -59,6 +60,10 @@ const Page = () => {
 
       <ExistingKeys />
 
+      <Title className="mb-2 mt-6">Default LLM</Title>
+      <Text className="mb-2">
+      { defaultLLMResponse }
+      </Text>
       <Title className="mb-2 mt-6">Update Key</Title>
       <Text className="mb-2">
         Specify an OpenAI API key and click the &quot;Submit&quot; button.
